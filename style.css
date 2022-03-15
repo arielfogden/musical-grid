@@ -1,0 +1,40 @@
+*,
+*:after,
+*:before {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,
+body {
+  min-height: 100%;
+  background-color: white;
+}
+
+body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.wrapper {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  border: solid 1px black;
+  border-radius: 20px;
+  overflow: hidden;
+}
+
+.grid-item {
+  height: 80px;
+  width: 80px;
+  background-color: yellow;
+  border: solid 1px black;
+  position: relative;
+  margin: -1px;
+}
+
+.grid-item.active{
+  opacity: .5;
+}
