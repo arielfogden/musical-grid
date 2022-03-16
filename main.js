@@ -17,38 +17,52 @@ window.addEventListener("DOMContentLoaded", function () {
     //finding in the list of grid items the index for the associated color and sound
     let activeGridItem = gridItems[gridItemIndex];
     //determining what the sound is based on the colors and sounds index for the grid item
-    let activeSound = colorsAndSounds[activeGridItem].sound; 
+    let activeSound = colorsAndSounds[activeGridItem].sound;
     synth.triggerAttackRelease(activeSound, "8n");
-    let gridElements = document.querySelectorAll(".grid-item")
-    let activeGridElement = gridElements.item(gridItemIndex)
-    console.log(gridElements)
-    gridElements.forEach(function(element){
-      element.classList.remove("active")
-    })
-    activeGridElement.classList.add("active")
-
-
+    let gridElements = document.querySelectorAll(".grid-item");
+    let activeGridElement = gridElements.item(gridItemIndex);
+    console.log(gridElements);
+    gridElements.forEach(function (element) {
+      element.classList.remove("active");
+    });
+    activeGridElement.classList.add("active");
   }
 
   let position = { x: 0, y: 0 };
   function handlePositionChange() {
     let gridItemIndex = position.y * 5 + position.x;
-    activateGridItem(gridItemIndex)
-
+    activateGridItem(gridItemIndex);
   }
 
+  //use arrow keys to navigate
   window.addEventListener("keyup", function (event) {
-    if (event.key == "ArrowUp" && position.y > 0) {
-      position.y = position.y - 1;
+    if (event.key == "ArrowUp") {
+      if (position.y > 0) {
+        position.y = position.y - 1;
+      } else if (position.y == 0) {
+        position.y = 4;
+      }
       handlePositionChange();
-    } else if (event.key == "ArrowDown" && position.y < 4) {
-      position.y = position.y + 1;
+    } else if (event.key == "ArrowDown") {
+      if (position.y < 4) {
+        position.y = position.y + 1;
+      } else if (position.y == 4) {
+        position.y = 0;
+      }
       handlePositionChange();
-    } else if (event.key == "ArrowLeft" && position.x > 0) {
-      position.x = position.x - 1;
+    } else if (event.key == "ArrowLeft") {
+      if (position.x > 0) {
+        position.x = position.x - 1;
+      } else if (position.x == 0) {
+        position.x = 4;
+      }
       handlePositionChange();
-    } else if (event.key == "ArrowRight" && position.x < 4) {
-      position.x = position.x + 1;
+    } else if (event.key == "ArrowRight") {
+      if (position.x < 4) {
+        position.x = position.x + 1;
+      } else if (position.x == 4) {
+        position.x = 0;
+      }
       handlePositionChange();
     }
   });
@@ -66,9 +80,9 @@ window.addEventListener("DOMContentLoaded", function () {
 
     element.addEventListener("click", function () {
       //activateGridItem(index);
-      position.y = Math.floor(index / 5)
-      position.x = index % 5
-      handlePositionChange()
+      position.y = Math.floor(index / 5);
+      position.x = index % 5;
+      handlePositionChange();
     });
   });
 });

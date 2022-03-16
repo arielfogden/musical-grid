@@ -18,6 +18,18 @@ body {
   justify-content: center;
 }
 
+.page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.instructions {
+  padding-top: 4em;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 18px;
+}
+
 .wrapper {
   display: grid;
   grid-template-columns: repeat(5, 1fr);
